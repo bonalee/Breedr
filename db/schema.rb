@@ -10,21 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170820191616) do
+ActiveRecord::Schema.define(version: 20170820213910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "breeds", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "pet_id"
+    t.integer "inverse_pet_id"
+    t.string "matched_status"
+    t.string "breed_id"
+    t.string "integer"
+    t.string "litter_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "pets", force: :cascade do |t|
     t.string "name"
-    t.string "breed"
     t.integer "user_id"
     t.string "birthdate"
     t.string "gender"
-    t.string "matched_status"
-    t.integer "matched_pet_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "breed_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,4 +1,7 @@
 class Pet < ApplicationRecord
   belongs_to :user
-  belongs_to :matched_pet, class_name: "Pet"
+  belongs_to :breed
+  has_many :matches
+  has_many :pets, through: :matches
+  has_many :inverse_pets, through: :matches
 end

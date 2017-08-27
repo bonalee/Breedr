@@ -1,0 +1,6 @@
+<% @breed.pets.each do |pet| %>
+  <div id='pet_bio'>
+    <h2><%= pet.name %></h2>
+    <img src='<%= pet.image %>' height='335' width='335'>
+  </div>
+<% end %>

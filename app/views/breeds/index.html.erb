@@ -1,4 +1,9 @@
-<h1>Pets</h1>
+<h1>Breedr Breeds</h1>
   <% @breeds.each do |breed| %>
-    <h3><%= breed.name %></h3>
+    <h3><a href='/breeds/<%= breed.id %>'><%= breed.name %></a></h3>
   <% end %>
+
+<br>
+<br>
+<br>
+<a href='/pets'>I want to see all pets</a>

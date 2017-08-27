@@ -1,4 +1,21 @@
-<h1>Pets</h1>
-  <% @pets.each do |pet| %>
-    <h3><%= pet.name %></h3>
-  <% end %>
+<h1>Breedr Pets</h1>
+  <div id='pet_bio'>
+    <% @pets.each do |pet| %>
+      <img src='<%= pet.image %>' height='335' width='335'>
+      <p>
+        <%= pet.name %>
+        <br>
+        <br>
+        Birthdate: <%= pet.birthdate %>
+        <br>
+        Gender: <%= pet.gender %>
+      </p>
+      <br>
+      <br>
+    <% end %>
+  </div>
+
+<br>
+<br>
+<br>
+<a href='/breeds'>I want to see the breeds</a>

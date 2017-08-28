@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "/" => "breeds#main"
+
   get "/breeds" => "breeds#index"
   get "/breeds/:id" => "breeds#show"
 
@@ -6,4 +8,11 @@ Rails.application.routes.draw do
   get "/pets/new" => "pets#new"
   post "/pets" => "pets#create"
   get "/pets/:id" => "pets#show"
+
+  get "/signup" => "users#new"
+  post "/users" => "users#create"
+
+  get "/login" => "sessions#new"
+  post "/login" => "sessions#create"
+  get "/logout" => "sessions#destroy"
 end

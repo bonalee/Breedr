@@ -1,4 +1,8 @@
 class BreedsController < ApplicationController
+  def main
+    render "main.html.erb"
+  end
+
   def index
     # @breeds = Pet.where(breed_id: 2)
     @breeds = Breed.all

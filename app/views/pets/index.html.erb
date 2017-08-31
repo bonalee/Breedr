@@ -1,7 +1,6 @@
-<a href='/'><h1>Breedr Pets</h1></a>
   <div id='pet_bio'>
     <% @pets.each do |pet| %>
-      <img src='<%= pet.image %>' height='335' width='335'>
+      <a href="/pets/<%= pet.id %>"><img src='<%= pet.image %>' height='335' width='335'></a>
       <p>
         <%= pet.name %>
         <br>

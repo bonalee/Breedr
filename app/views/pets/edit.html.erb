@@ -1,13 +1,13 @@
 <a href='/'><h1>Register My Pup</h1></a>
-<%= form_tag "/pets", method: "post" do %>
+<%= form_tag "/pets/#{@pet.id}", method: "patch" do %>
   <div class="form-group">
-    Name: <input type="text" class="form-control" name="name">
+    Name: <input type="text" class="form-control" value="<%= @pet.name %>" name="name">
   </div>
   <div class="form-group">
-    Birthdate: <input type="text" class="form-control" name="birthdate">
+    Birthdate: <input type="text" class="form-control" value="<%= @pet.birthdate %>" name="birthdate">
   </div>
 
-  <div class="form-group" name="gender">
+  <div class="form-group" value="<%= @pet.gender %>" name="gender">
     Gender: 
     <select>
       <option value="male">Male</option>
@@ -15,7 +15,7 @@
     </select>
   </div>
 
-  <div class="form-group" name="breed_name">
+  <div class="form-group" value="<%= @pet.breed_id %>" name="breed_id">
     Breed:
     <select>
       <%= @breeds.each do |breed| %>

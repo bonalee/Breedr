@@ -1,6 +1,14 @@
+<a href='/'><h1>Breedr Pets</h1></a>
 <% @breed.pets.each do |pet| %>
   <div id='pet_bio'>
     <h2><%= pet.name %></h2>
     <img src='<%= pet.image %>' height='335' width='335'>
   </div>
 <% end %>
+<br>
+<br>
+<a href='/pet/:id'>Edit this Pet</a>
+<br>
+<br>
+<br>
+<a href='/logout'>Logout</a>

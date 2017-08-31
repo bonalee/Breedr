@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/pets" => "pets#index"
   get "/pets/new" => "pets#new"
   post "/pets" => "pets#create"
+  patch "/pets/:id" => "pets#update"
   get "/pets/:id" => "pets#show"
 
   get "/signup" => "users#new"

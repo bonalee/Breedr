@@ -23,11 +23,6 @@
           <li class="portfolio-project-name"><%= pet.name %></li>
           <li>Birthdate: <%= pet.birthdate %></li>
           <li>Gender: <%= pet.gender %></li>
-          <!-- add "match" functionality -->
-          <%= form_tag "/pets", method: "post" do %>
-            <li class="read-more"><a href="" class="btn">Match</a></li>
-          <% end %>
-          <!-- end "match" functionality -->
         </ul>
       </div>
     </div>

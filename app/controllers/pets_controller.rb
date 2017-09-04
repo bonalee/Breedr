@@ -1,4 +1,9 @@
 class PetsController < ApplicationController
+  def main
+    @pets = current_user.pets
+    render 'main.html.erb'
+  end
+  
   def index
     @pets = Pet.all
     images = Image.all

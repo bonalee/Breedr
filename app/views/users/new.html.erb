@@ -1,23 +1,51 @@
-<h1>Welcome to Breedr!</h1>
-<h3>Sign Up</h3>
-<%= form_tag '/users', method: :post do  %>
-  <div>
-    First Name: <input type="text" name="first_name">
+<div class="section section-breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Sign Up</h1>
+      </div>
+    </div>
   </div>
-  <div>
-    Last Name: <input type="text" name="last_name">
+</div>
+
+
+<div class="section">
+<div class="container">
+<div class="row">
+    <div class="basic-login">
+      <%= form_tag '/users', method: :post do  %>
+      <form role="form">
+        <div class="form-group">
+              <label for="register-firstname"><i class="icon-user"></i> <b>First Name</b></label>
+          <input class="form-control" id="register-firstname" type="text" placeholder="">
+        </div>
+        <div class="form-group">
+              <label for="register-lastname"><i class="icon-user"></i> <b>Last Name</b></label>
+          <input class="form-control" id="register-lastname" type="text" placeholder="">
+        </div>
+        <div class="form-group">
+              <label for="register-username"><i class="icon-user"></i> <b>Email</b></label>
+          <input class="form-control" id="register-username" type="text" placeholder="">
+        </div>
+        <div class="form-group">
+              <label for="register-phonenumber"><i class="icon-user"></i> <b>Phone Number</b></label>
+          <input class="form-control" id="register-phonenumber" type="text" placeholder="">
+        </div>
+        <div class="form-group">
+              <label for="register-password"><i class="icon-lock"></i> <b>Password</b></label>
+          <input class="form-control" id="register-password" type="password" placeholder="">
+        </div>
+        <div class="form-group">
+              <label for="register-password2"><i class="icon-lock"></i> <b>Re-enter Password</b></label>
+          <input class="form-control" id="register-password2" type="password" placeholder="">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn pull-right">Register</button>
+          <div class="clearfix"></div>
+        </div>
+      </form>
+      <% end %>
+    </div>
   </div>
-  <div>
-    Phone Number: <input type="tel" name="phone_number">
   </div>
-  <div>
-    Email: <input type="email" name="email">
-  </div>
-  <div>
-    Password: <input type="password" name="password">
-  </div>
-  <div>
-    Confirm Password: <input type="password" name="password_confirmation">
-  </div>
-  <input type="submit" value="Submit">
-<% end %>
+</div>

@@ -1,15 +1,14 @@
-<a href='/'><h1>Breedr</h1></a>
-  <% @breeds.each do |breed| %>
-    <h3><a href='/breeds/<%= breed.id %>'><%= breed.name %></a></h3>
-  <% end %>
+<!-- Page Title -->
+<div class="section section-breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>Breeds</h1>
+      </div>
+    </div>
+  </div>
+</div>
 
-<br>
-<br>
-<br>
-<a href='/pets'>I want to see all pets</a>
-<br>
-<br>
-<br>
-<br>
-<br>
-<a href='/logout'>Logout</a>
+<% @breeds.each do |breed| %>
+  <h3><a href='/breeds/<%= breed.id %>'><%= breed.name %></a></h3>
+<% end %>

@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   get "/" => "breeds#main"
-
   get "/breeds" => "breeds#index"
   get "/breeds/:id" => "breeds#show"
 
   get "/pets" => "pets#index"
   get "/pets/new" => "pets#new"
   post "/pets" => "pets#create"
-  patch "/pets/:id" => "pets#update"
   get "/pets/:id" => "pets#show"
+
+  get "/pets/mine" => "pets#personal"
 
   get "/signup" => "users#new"
   post "/users" => "users#create"

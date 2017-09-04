@@ -1,15 +1,38 @@
-<h1>Welcome to Breedr!</h1>
-<h3>Login</h3>
+<!-- Page Title -->
+<div class="section section-breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Login</h1>
+      </div>
+    </div>
+  </div>
+</div>
+    
 <%= form_tag "/login", method: :post do %>
-  <div>
-    Email: <input type="email" name="email">
-  </div>
-  <div>
-    Password: <input type="password" name="password">
-  </div>
-  <input type="submit" value="Log In">
-  <br>
-  <br>
-  <br>
-  <a href="/signup">Don't have an account?</a>
-<% end %>
+<div class="section">
+<div class="container">
+<div class="row">
+    <div class="basic-login">
+      <form role="form" role="form">
+        <div class="form-group">
+              <label for="login-username"><i class="icon-user"></i> <b>Email</b></label>
+          <input class="form-control" id="login-username" type="email" name="email">
+        </div>
+        <div class="form-group">
+              <label for="login-password"><i class="icon-lock"></i> <b>Password</b></label>
+          <input class="form-control" id="login-password" type="password" name="password">
+        </div>
+        <div class="form-group">
+          <label class="checkbox">
+            <input type="checkbox"> Remember me
+          </label>
+          <button type="submit" class="btn pull-right">Login</button>
+          <div class="clearfix"></div>
+        </div>
+      </form>
+    </div>
+  <% end %>
+</div>
+</div>
+</div>

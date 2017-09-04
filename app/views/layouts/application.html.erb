@@ -32,25 +32,29 @@
           </div>
           <nav id="mainmenu" class="mainmenu">
             <ul>
-              <li class="logo-wrapper"><a href="/"><h1>Breedr</h1></a></li>
+              <li class="logo-wrapper"><a href="/"><img src="img/breedr.png" height="80" width="120"></a></li>
+              <% if current_user %>
               <li>
-                <a href="/">Home</a>
-              </li>
-              <li>
-                <a href="/pets">Pets</a>
+                <a href="/pets">All Pets</a>
               </li>
               <li>
                 <a href="/breeds">Breeds</a>
               </li>
+              <li>
+                <a href="/">My Info</a>
+              </li>
+              <li>
+                <a href="/logout">Logout</a>
+              </li>
+              <% end %>
+              <% unless current_user %>
               <li>
                 <a href="/login">Login</a>
               </li>
               <li>
                 <a href="/signup">Register</a>
               </li>
-              <li>
-                <a href="/logout">Logout</a>
-              </li>
+              <% end %>
             </ul>
           </nav>
         </div>

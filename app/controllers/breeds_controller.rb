@@ -1,6 +1,7 @@
 class BreedsController < ApplicationController
   def main
-    render "main.html.erb"
+    @pets = current_user.pets
+    render 'main.html.erb'
   end
 
   def index
@@ -11,7 +12,6 @@ class BreedsController < ApplicationController
 
   def show
     breed_id = params[:id]
-
     @breed = Breed.find_by(id: breed_id)
     render "show.html.erb"
   end

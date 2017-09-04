@@ -1,6 +1,38 @@
-<h1>Welcome to Breedr!</h1>
-<a href="/pets">See your pets</a>
-<br>
-<a href="/pets/matches">See your matches</a>
-<br>
-<br>
+<!-- Page Title -->
+<div class="section section-breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>Your Pets</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="section">
+<div class="container">
+<% @pets.each do |pet| %>
+  <div class="col-sm-6">
+    <div class="portfolio-item">
+      <div class="portfolio-image">
+        <a href="/pets/<%= pet.id %>"><img src="<%= pet.image %>" height="335" width="335"></a>
+      </div>
+      <div class="portfolio-info-fade">
+        <ul>
+          <li class="portfolio-project-name"><%= pet.name %></li>
+          <li>Birthdate: <%= pet.birthdate %></li>
+          <li>Gender: <%= pet.gender %></li>
+          <!-- add "match" functionality -->
+          <%= form_tag "/pets", method: "post" do %>
+            <li class="read-more"><a href="" class="btn">Match</a></li>
+          <% end %>
+          <!-- end "match" functionality -->
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
+</div>
+<a href="/pets/new" class="btn">Register New Pet</a>

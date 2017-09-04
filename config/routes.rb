@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   post "/pets" => "pets#create"
   get "/pets/:id" => "pets#show"
 
-  get "/pets/mine" => "pets#personal"
-
   get "/signup" => "users#new"
   post "/users" => "users#create"
 

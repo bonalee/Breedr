@@ -1,6 +1,33 @@
+<!-- Page Title -->
+<div class="section section-breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1><% @breed.name %></h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="section">
+<div class="container">
 <% @breed.pets.each do |pet| %>
-  <div id='pet_bio'>
-    <h2><%= pet.name %></h2>
-    <img src='<%= pet.image %>' height='335' width='335'>
+  <div class="col-sm-6">
+    <div class="portfolio-item">
+      <div class="portfolio-image">
+        <a href="/pets/<%= pet.id %>"><img src="<%= pet.image %>" height="335" width="335"></a>
+      </div>
+      <div class="portfolio-info-fade">
+        <ul>
+          <li class="portfolio-project-name"><%= pet.name %></li>
+          <li>Birthdate: <%= pet.birthdate %></li>
+          <li>Gender: <%= pet.gender %></li>
+          <li class="read-more"><a href="page-portfolio-item.html" class="btn">Match</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 <% end %>
+</div>
+</div>

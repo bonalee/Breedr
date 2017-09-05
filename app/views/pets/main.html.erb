@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h1>Your Pets</h1>
+        <h1>Your Account</h1>
       </div>
     </div>
   </div>
@@ -23,6 +23,7 @@
           <li class="portfolio-project-name"><%= pet.name %></li>
           <li>Birthdate: <%= pet.birthdate %></li>
           <li>Gender: <%= pet.gender %></li>
+          <li><a href="/pets/<%= pet.id %>" class="btn">Delete This Pet</a></li>
         </ul>
       </div>
     </div>

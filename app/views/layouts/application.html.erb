@@ -41,7 +41,7 @@
                 <a href="/breeds">Breeds</a>
               </li>
               <li>
-                <a href="/">My Info</a>
+                <a href="/user/pets">My Pets</a>
               </li>
               <li>
                 <a href="/logout">Logout</a>
@@ -61,6 +61,12 @@
       </div>
 
     <body>
+      <div class="container">
+        <% flash.each do |name, message| %>
+          <p><%= message %></p>
+        <% end %>
+      </div>
+
       <%= yield %>
 
       <!-- Footer -->

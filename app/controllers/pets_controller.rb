@@ -1,5 +1,5 @@
 class PetsController < ApplicationController
-  def main
+  def user_index
     @pets = current_user.pets
     render 'main.html.erb'
   end
@@ -30,5 +30,12 @@ class PetsController < ApplicationController
   def show
     @pet = Pet.find_by(id: params[:id])
     render 'show.html.erb'
+  end
+
+  def delete
+    @pet = Pet.find_by(id: params[:id])
+    @pet.destroy
+    redirect_to "/user/pets"
+    flash[:success] = "Pet deleted!"
   end
 end

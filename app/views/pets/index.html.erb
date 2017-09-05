@@ -23,7 +23,9 @@
           <li class="portfolio-project-name"><%= pet.name %></li>
           <li>Birthdate: <%= pet.birthdate %></li>
           <li>Gender: <%= pet.gender %></li>
-          <li class="read-more"><a href="page-portfolio-item.html" class="btn">Match</a></li>
+          <% if current_user.id != pet.user_id %>
+            <li class="read-more"><a href="page-portfolio-item.html" class="btn">Match</a></li>
+          <% end %>
         </ul>
       </div>
     </div>

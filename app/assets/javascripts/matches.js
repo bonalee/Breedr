@@ -4,21 +4,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     el: '#app',
     data: {
       message1: 'Pending Matches',
-      message2: 'Confirmed Matches',
-      matches: []
+      message2: 'Confirmed Matches'
     },
     mounted: function() {
 
     },
     methods: {
-      requestMatch: function() {
-        var newMatch = {
-          status: false
-        };
-      },
-      confirmMatch: function() {
-        
-      }
+ 
     },
     computed: {
 

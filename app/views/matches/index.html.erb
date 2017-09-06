@@ -12,13 +12,12 @@
 
 <div class="section">
 <div class="container">
-  <h2>{{ message1 }}</h2>
-  <% @pet_matches.each do |pet_match| %>
-    <%= pet_match.pet_id %>
-    <br>
-    <%= pet_match.inverse_pet_id %>
-  <% end %>
-  <h2>{{ message2 }}</h2>
+  <h2>Pending Incoming Matches</h2>
+
+  <h2>Pending Outgoing Matches</h2>
+    <%= @outgoing_matches %>
+
+  <h2>Confirmed Matches</h2>
 </div>
 </div>
 </div>

@@ -3,7 +3,12 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h1><% @breed.name %></h1>
+        <% if @breed.name != "Other" %>
+          <h1>Types of <%= @breed.name %>s</h1>
+        <% end %>
+        <% if @breed.name == "Other" %>
+          <h1>Other Breeds</h1>
+        <% end %>
       </div>
     </div>
   </div>
@@ -23,7 +28,11 @@
           <li class="portfolio-project-name"><%= pet.name %></li>
           <li>Birthdate: <%= pet.birthdate %></li>
           <li>Gender: <%= pet.gender %></li>
-          <li class="read-more"><a href="page-portfolio-item.html" class="btn">Match</a></li>
+          <% if current_user.id != pet.user_id %>
+            <br>
+            <br>
+            <li><a href="page-portfolio-item.html" class="btn">Match</a></li>
+          <% end %>
         </ul>
       </div>
     </div>

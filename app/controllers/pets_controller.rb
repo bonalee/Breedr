@@ -1,12 +1,16 @@
 class PetsController < ApplicationController
   def user_index
-    @pets = current_user.pets
-    render 'main.html.erb'
+    if current_user
+      @pets = current_user.pets
+      render 'main.html.erb'
+    else
+      redirect_to '/login'
+    end
   end
   
   def index
     @pets = Pet.all
-    images = Image.all
+    @images = Image.all
     render "index.html.erb"
   end
 
@@ -35,7 +39,8 @@ class PetsController < ApplicationController
   def delete
     @pet = Pet.find_by(id: params[:id])
     @pet.destroy
-    redirect_to "/user/pets"
+    redirect_to "/mypets"
     flash[:success] = "Pet deleted!"
   end
 end
+

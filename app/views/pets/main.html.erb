@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h1>Your Account</h1>
+        <h1>My Info</h1>
       </div>
     </div>
   </div>
@@ -12,6 +12,11 @@
 
 <div class="section">
 <div class="container">
+<h1>Welcome <%= current_user.first_name %>!</h1>
+<h4><a href="/matches">View All Matches</a></h4>
+<br>
+<br>
+<h2>My Pets</h2>
 <% @pets.each do |pet| %>
   <div class="col-sm-6">
     <div class="portfolio-item">
@@ -23,7 +28,10 @@
           <li class="portfolio-project-name"><%= pet.name %></li>
           <li>Birthdate: <%= pet.birthdate %></li>
           <li>Gender: <%= pet.gender %></li>
-          <li><a href="/pets/<%= pet.id %>" class="btn">Delete This Pet</a></li>
+          <br>
+          <br>
+          <a href="/pets?pet_id=<%= pet.id %>" class="btn">Select This Pet</a>
+          <a href="/pets/<%= pet.id %>" class="btn">Delete This Pet</a>
         </ul>
       </div>
     </div>

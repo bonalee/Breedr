@@ -24,7 +24,9 @@
           <li>Birthdate: <%= pet.birthdate %></li>
           <li>Gender: <%= pet.gender %></li>
           <% if current_user.id != pet.user_id %>
-            <li class="read-more"><a href="page-portfolio-item.html" class="btn">Match</a></li>
+            <br>
+            <br>
+            <button v-on:click="requestMatch()" class="btn">Match</button>
           <% end %>
         </ul>
       </div>

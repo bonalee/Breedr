@@ -29,7 +29,7 @@
             <%= form_tag "/matches", method: "post" do %>
               <input type="hidden" name="inverse_pet_id" value="<%= pet.id %>">
               <input type="hidden" name="pet_id" value="<%= @pet_id %>">
-              <input type="hidden" name="status" value="Pending"
+              <input type="hidden" name="status" value="Pending">
               <input type="submit" class="btn" value="Match"></input>
             <% end %>
           <% end %>

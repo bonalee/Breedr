@@ -1,23 +1,74 @@
 <div id="app">
 <!-- Page Title -->
-<div class="section section-breadcrumbs">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <h1>Your Matches</h1>
+  <div class="section section-breadcrumbs">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Your Matches</h1>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="section">
-<div class="container">
-  <h2>Pending Incoming Matches</h2>
 
-  <h2>Pending Outgoing Matches</h2>
-    <%= @outgoing_matches %>
+  <div class="section">
+    <div class="container">
 
-  <h2>Confirmed Matches</h2>
-</div>
-</div>
+      <h2>Pending Incoming Matches</h2>
+        <% @incoming_matches.each do |incoming_match| %>
+        <div class="col-sm-6">
+          <div class="portfolio-item">
+            <div class="portfolio-image">
+              <img src="<%= incoming_match.pet.image %>" height="335" width="335">
+            </div>
+            <div class="portfolio-info-fade">
+              <ul>
+                <li class="portfolio-project-name"><%= incoming_match.pet.name %></li>
+                <li>Birthdate: <%= incoming_match.pet.birthdate %></li>
+                <li>Gender: <%= incoming_match.pet.gender %></li>
+                <br>
+                <li><i>Status: <%= incoming_match.matched_status %></i></li>
+                <br>
+                <li><input type="submit" class="btn" value="Accept"></input>
+                <input type="submit" class="btn" value="Decline"></input></li>
+              </ul>
+            </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="section">
+    <div class="container">
+      <h2>Pending Outgoing Matches</h2>
+        <% @outgoing_matches.each do |outgoing_match| %>
+        <div class="col-sm-6">
+          <div class="portfolio-item">
+            <div class="portfolio-image">
+              <img src="<%= outgoing_match.inverse_pet.image %>" height="335" width="335">
+            </div>
+            <div class="portfolio-info-fade">
+              <ul>
+                <li class="portfolio-project-name"><%= outgoing_match.inverse_pet.name %></li>
+                <li>Birthdate: <%= outgoing_match.inverse_pet.birthdate %></li>
+                <li>Gender: <%= outgoing_match.inverse_pet.gender %></li>
+                <br>
+                <li><i>Status: <%= outgoing_match.matched_status %></i></li>
+                <br>
+                <li><input type="submit" class="btn" value="Sniff"></input></li>
+              </ul>
+            </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+
+      <h2>Confirmed Matches</h2>
+
+    </div>
+  </div>
 </div>

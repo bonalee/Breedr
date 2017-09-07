@@ -21,14 +21,16 @@ class PetsController < ApplicationController
   end
 
   def create
-    pet = Pet.new(
+    @user_id = current_user.id
+    @breeds = Breed.all
+
+    pet = Pet.create(
       name: params[:name],
+      user_id: params[:user_id],
       birthdate: params[:birthdate],
       gender: params[:gender],
-      breed_id: params[:breed_id],
-      image: params[:image]
+      breed_id: params[:breed_id]
       )
-    pet.save
     redirect_to "/pets/#{params[:user_id]}"
   end
 

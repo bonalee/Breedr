@@ -1,12 +1,26 @@
 class MatchesController < ApplicationController
   def index
-    @my_pets = []
+    @pets = Pet.all
+    @pets.each do |pet|
+      @pet = pet.id
+    end
+
     @outgoing_matches = []
+    @incoming_matches = []
 
     current_user.pets.each do |current_user_pet|
-      @my_pets << current_user_pet
-      pet_match = Match.find_by(pet_id: current_user_pet.id)
-      @outgoing_matches << pet_match
+      pet_outmatch = Match.find_by(pet_id: current_user_pet.id)
+      @pet_info = Pet.find_by(id: params[:pet_id])
+      if pet_outmatch != nil
+        @outgoing_matches << pet_outmatch
+      end
+    end
+
+    current_user.pets.each do |current_user_pet|
+      pet_inmatch = Match.find_by(inverse_pet_id: current_user_pet.id)
+      if pet_inmatch != nil
+        @incoming_matches << pet_inmatch
+      end
     end
     render "index.html.erb"
   end

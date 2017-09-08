@@ -13,7 +13,6 @@
 
   <div class="section">
     <div class="container">
-
       <h2>Pending Incoming Matches</h2>
         <% @incoming_matches.each do |incoming_match| %>
         <div class="col-sm-6">
@@ -27,10 +26,10 @@
                 <li>Birthdate: <%= incoming_match.pet.birthdate %></li>
                 <li>Gender: <%= incoming_match.pet.gender %></li>
                 <br>
-                <li><i>Status: <%= incoming_match.matched_status %></i></li>
-                <br>
                 <li><input type="submit" class="btn" value="Accept"></input>
                 <input type="submit" class="btn" value="Decline"></input></li>
+                <br>
+                <li><i>Don't keep <%= incoming_match.pet.name %> waiting!</i></li>
               </ul>
             </div>
         </div>
@@ -44,30 +43,77 @@
     <div class="container">
       <h2>Pending Outgoing Matches</h2>
         <% @outgoing_matches.each do |outgoing_match| %>
-        <div class="col-sm-6">
-          <div class="portfolio-item">
-            <div class="portfolio-image">
-              <img src="<%= outgoing_match.inverse_pet.image %>" height="335" width="335">
-            </div>
-            <div class="portfolio-info-fade">
-              <ul>
-                <li class="portfolio-project-name"><%= outgoing_match.inverse_pet.name %></li>
-                <li>Birthdate: <%= outgoing_match.inverse_pet.birthdate %></li>
-                <li>Gender: <%= outgoing_match.inverse_pet.gender %></li>
-                <br>
-                <li><i>Status: <%= outgoing_match.matched_status %></i></li>
-                <br>
-                <li><input type="submit" class="btn" value="Sniff"></input></li>
-              </ul>
-            </div>
+          <% if outgoing_match.matched_status == "Pending" %>
+          <div class="col-sm-6">
+            <div class="portfolio-item">
+              <div class="portfolio-image">
+                <img src="<%= outgoing_match.inverse_pet.image %>" height="335" width="335">
+              </div>
+              <div class="portfolio-info-fade">
+                <ul>
+                  <li class="portfolio-project-name"><%= outgoing_match.inverse_pet.name %></li>
+                  <li>Birthdate: <%= outgoing_match.inverse_pet.birthdate %></li>
+                  <li>Gender: <%= outgoing_match.inverse_pet.gender %></li>
+                  <br>
+                  <li><input type="submit" class="btn" value="Sniff"></input></li>
+                </ul>
+              </div>
+          </div>
         </div>
-      </div>
+        <% end %>
       <% end %>
     </div>
   </div>
 
 
-      <h2>Confirmed Matches</h2>
+  <div class="section">
+      <div class="container">
+        <h2>Confirmed Matches</h2>
+          <% @confirmed_matches.each do |confirmed_match| %>
+            <% @current_user_petids.each do |current_user_petid| %>
+              <% if current_user_petid == confirmed_match.pet_id %>
+                <div class="col-sm-6">
+                  <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="<%= confirmed_match.inverse_pet.image %>" height="335" width="335">
+                    </div>
+                    <div class="portfolio-info-fade">
+                      <ul>
+                        <li class="portfolio-project-name"><%= confirmed_match.inverse_pet.name %></li>
+                        <li>Birthdate: <%= confirmed_match.inverse_pet.birthdate %></li>
+                        <li>Gender: <%= confirmed_match.inverse_pet.gender %></li>
+                        <br>
+                        <li><input type="submit" class="btn" value="Bark!"></input></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+
+
+              <% if current_user_petid == confirmed_match.inverse_pet_id %>
+                <div class="col-sm-6">
+                  <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="<%= confirmed_match.pet.image %>" height="335" width="335">
+                    </div>
+                    <div class="portfolio-info-fade">
+                      <ul>
+                        <li class="portfolio-project-name"><%= confirmed_match.pet.name %></li>
+                        <li>Birthdate: <%= confirmed_match.pet.birthdate %></li>
+                        <li>Gender: <%= confirmed_match.pet.gender %></li>
+                        <br>
+                        <li><input type="submit" class="btn" value="Bark!"></input></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+
 
     </div>
   </div>

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   get "/matches" => "matches#index"
   post "/matches" => "matches#create"
+  patch "/matches/:id" => "matches#update"
   get "/matches/:id" => "matches#show"
 
   get "/signup" => "users#new"

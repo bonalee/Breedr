@@ -15,6 +15,7 @@
     <div class="container">
       <h2>Pending Incoming Matches</h2>
         <% @incoming_matches.each do |incoming_match| %>
+        <% if incoming_match.matched_status == "Pending" %>
         <div class="col-sm-6">
           <div class="portfolio-item">
             <div class="portfolio-image">
@@ -23,17 +24,31 @@
             <div class="portfolio-info-fade">
               <ul>
                 <li class="portfolio-project-name"><%= incoming_match.pet.name %></li>
+                <br>
                 <li>Birthdate: <%= incoming_match.pet.birthdate %></li>
                 <li>Gender: <%= incoming_match.pet.gender %></li>
                 <br>
-                <li><input type="submit" class="btn" value="Accept"></input>
-                <input type="submit" class="btn" value="Decline"></input></li>
+                  <i>Match requested for: <%= incoming_match.inverse_pet.name %></i>
+                  <%= form_tag "/matches/#{incoming_match.id}", method: "patch" do %>
+                    <input type="hidden" name="pet_id" value="<%= incoming_match.pet_id %>">
+                    <input type="hidden" name="inverse_pet_id" value="<%= incoming_match.inverse_pet_id %>">
+                    <input type="hidden" name="matched_status" value="Confirmed">
+                    <input type="submit" class="btn" value="Accept"></input>
+                  <% end %>
+                  <%= form_tag "/matches/#{incoming_match.id}", method: "patch" do %>
+                    <input type="hidden" name="pet_id" value="<%= incoming_match.pet_id %>">
+                    <input type="hidden" name="inverse_pet_id" value="<%= incoming_match.inverse_pet_id %>">
+                    <input type="hidden" name="matched_status" value="Declined">
+                    <input type="submit" class="btn" value="Decline"></input>
+                  <% end %>
+                <br>
                 <br>
                 <li><i>Don't keep <%= incoming_match.pet.name %> waiting!</i></li>
               </ul>
             </div>
         </div>
       </div>
+      <% end %>
       <% end %>
     </div>
   </div>
@@ -44,7 +59,7 @@
       <h2>Pending Outgoing Matches</h2>
         <% @outgoing_matches.each do |outgoing_match| %>
           <% if outgoing_match.matched_status == "Pending" %>
-          <div class="col-sm-6">
+            <div class="col-sm-6">
             <div class="portfolio-item">
               <div class="portfolio-image">
                 <img src="<%= outgoing_match.inverse_pet.image %>" height="335" width="335">
@@ -55,11 +70,13 @@
                   <li>Birthdate: <%= outgoing_match.inverse_pet.birthdate %></li>
                   <li>Gender: <%= outgoing_match.inverse_pet.gender %></li>
                   <br>
-                  <li><input type="submit" class="btn" value="Sniff"></input></li>
+                  <li><i>Match requested by: <%= outgoing_match.pet.name %></i></li>
+                  <br>
+                  <li><input type="submit" class="btn" value="Sniff <%= outgoing_match.inverse_pet.name %>"></input></li>
                 </ul>
               </div>
+            </div>
           </div>
-        </div>
         <% end %>
       <% end %>
     </div>
@@ -83,7 +100,9 @@
                         <li>Birthdate: <%= confirmed_match.inverse_pet.birthdate %></li>
                         <li>Gender: <%= confirmed_match.inverse_pet.gender %></li>
                         <br>
-                        <li><input type="submit" class="btn" value="Bark!"></input></li>
+                        <li><i>Matched with: <%= confirmed_match.pet.name %></i></li>
+                        <br>
+                        <li><input type="submit" class="btn" value="Message <%= confirmed_match.inverse_pet.name %>"></input></li>
                       </ul>
                     </div>
                   </div>
@@ -103,7 +122,9 @@
                         <li>Birthdate: <%= confirmed_match.pet.birthdate %></li>
                         <li>Gender: <%= confirmed_match.pet.gender %></li>
                         <br>
-                        <li><input type="submit" class="btn" value="Bark!"></input></li>
+                        <li><i>Matched with: <%= confirmed_match.inverse_pet.name %></i></li>
+                        <br>
+                        <li><input type="submit" class="btn" value="Message <%= confirmed_match.pet.name %>"></input></li>
                       </ul>
                     </div>
                   </div>

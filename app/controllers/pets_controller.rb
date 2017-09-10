@@ -10,7 +10,6 @@ class PetsController < ApplicationController
   
   def index
     @pets = Pet.all
-    # @images = Image.all
     @pet_id = params[:pet_id]
     render "index.html.erb"
   end

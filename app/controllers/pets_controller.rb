@@ -11,6 +11,7 @@ class PetsController < ApplicationController
   def index
     @pets = Pet.all
     @pet_id = params[:pet_id]
+
     render "index.html.erb"
   end
 

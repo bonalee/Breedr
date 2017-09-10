@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h1>My Account</h1>
+        <h1>Welcome <%= current_user.first_name %></h1>
       </div>
     </div>
   </div>
@@ -12,11 +12,7 @@
 
 <div class="section">
 <div class="container">
-<h1>Welcome <%= current_user.first_name %>!</h1>
-<h4><a href="/matches">View All Matches</a></h4>
-<br>
-<br>
-<h2>My Pets</h2>
+<h3>Your Pets</h3>
 <% @pets.each do |pet| %>
   <div class="col-sm-6">
     <div class="portfolio-item">
@@ -37,6 +33,11 @@
     </div>
   </div>
 <% end %>
+<div align="right">
+  <a href="/pets/new" class="btn">Register New Pet</a>
+  <br>
+  <br>
+  <a href="/matches" class="btn">See Your Matches</a>
 </div>
 </div>
-<a href="/pets/new" class="btn">Register New Pet</a>
+</div>

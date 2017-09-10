@@ -19,7 +19,7 @@
         <div class="col-sm-6">
           <div class="portfolio-item">
             <div class="portfolio-image">
-              <img src="<%= incoming_match.pet.image %>" height="335" width="335">
+              <img src="<%= incoming_match.pet.image %>" height="350" width="425">
             </div>
             <div class="portfolio-info-fade">
               <ul>
@@ -62,7 +62,7 @@
             <div class="col-sm-6">
             <div class="portfolio-item">
               <div class="portfolio-image">
-                <img src="<%= outgoing_match.inverse_pet.image %>" height="335" width="335">
+                <img src="<%= outgoing_match.inverse_pet.image %>" height="350" width="425">
               </div>
               <div class="portfolio-info-fade">
                 <ul>
@@ -72,7 +72,7 @@
                   <br>
                   <li><i>Match requested by: <%= outgoing_match.pet.name %></i></li>
                   <br>
-                  <li><input type="submit" class="btn" value="Sniff <%= outgoing_match.inverse_pet.name %>"></input></li>
+                  <li><a href="/matches/sniff" class="btn">Sniff <%= outgoing_match.inverse_pet.name %></a></li>
                 </ul>
               </div>
             </div>
@@ -89,53 +89,45 @@
           <% @confirmed_matches.each do |confirmed_match| %>
             <% @current_user_petids.each do |current_user_petid| %>
               <% if current_user_petid == confirmed_match.pet_id %>
-                <div class="col-sm-6">
+                <div class="row-sm-6">
                   <div class="portfolio-item">
                     <div class="portfolio-image">
-                        <img src="<%= confirmed_match.inverse_pet.image %>" height="335" width="335">
+                        <img src="<%= confirmed_match.inverse_pet.image %>" height="350" width="425">
+                        <img src="<%= confirmed_match.pet.image %>" height="350" width="425">
                     </div>
-                    <div class="portfolio-info-fade">
-                      <ul>
-                        <li class="portfolio-project-name"><%= confirmed_match.inverse_pet.name %></li>
-                        <li>Birthdate: <%= confirmed_match.inverse_pet.birthdate %></li>
-                        <li>Gender: <%= confirmed_match.inverse_pet.gender %></li>
-                        <br>
-                        <li><i>Matched with: <%= confirmed_match.pet.name %></i></li>
-                        <br>
-                        <li><input type="submit" class="btn" value="Message <%= confirmed_match.inverse_pet.name %>"></input></li>
-                      </ul>
-                    </div>
+                  <div class="portfolio-info-fade">
+                    <ul>
+                      <li class="portfolio-project-name"><%= confirmed_match.pet.name %> &hearts; <%= confirmed_match.inverse_pet.name %></li>
+                      <br>
+                      <br>
+                      <li><a href="/matches/<%= confirmed_match.id %>" class="btn">Message</a></li>
+                    </ul>
                   </div>
                 </div>
               <% end %>
 
 
               <% if current_user_petid == confirmed_match.inverse_pet_id %>
-                <div class="col-sm-6">
-                  <div class="portfolio-item">
-                    <div class="portfolio-image">
-                        <img src="<%= confirmed_match.pet.image %>" height="335" width="335">
-                    </div>
-                    <div class="portfolio-info-fade">
-                      <ul>
-                        <li class="portfolio-project-name"><%= confirmed_match.pet.name %></li>
-                        <li>Birthdate: <%= confirmed_match.pet.birthdate %></li>
-                        <li>Gender: <%= confirmed_match.pet.gender %></li>
-                        <br>
-                        <li><i>Matched with: <%= confirmed_match.inverse_pet.name %></i></li>
-                        <br>
-                        <li><input type="submit" class="btn" value="Message <%= confirmed_match.pet.name %>"></input></li>
-                      </ul>
-                    </div>
+                <div class="row-sm-6">
+                <div class="portfolio-item">
+                  <div class="portfolio-image">
+                      <img src="<%= confirmed_match.pet.image %>" height="350" width="400">
+                      <img src="<%= confirmed_match.inverse_pet.image %>" height="350" width="400">
+                  </div>
+                  <div class="portfolio-info-fade">
+                    <ul>
+                      <li class="portfolio-project-name"><%= confirmed_match.inverse_pet.name %> &hearts; <%= confirmed_match.pet.name %></li>
+                      <br>
+                      <br>
+                      <li><a href="/matches/<%= confirmed_match.id %>" class="btn">Message</a></li>
+                    </ul>
                   </div>
                 </div>
               <% end %>
+
             <% end %>
           <% end %>
-      </div>
-    </div>
-
-
     </div>
   </div>
+
 </div>

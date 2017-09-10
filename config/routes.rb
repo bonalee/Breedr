@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      get '/messages' => 'messages#index'
+      get '/messages' => 'messages#show'
+      post '/messages' => 'messages#create'
+    end
+  end
+
   get "/" => "pets#user_index"
 
   get "/breeds" => "breeds#index"
@@ -22,4 +30,7 @@ Rails.application.routes.draw do
   get "/login" => "sessions#new"
   post "/login" => "sessions#create"
   get "/logout" => "sessions#destroy"
+
+  get "/messages" => "messages#index"
+  post "/messages" => "messages#create"
 end

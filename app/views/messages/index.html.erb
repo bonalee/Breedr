@@ -1,0 +1,25 @@
+<!-- Page Title -->
+  <div class="section section-breadcrumbs">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Breedr Chat</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div id="app">
+  <% if current_user %>
+    <div>
+      <input type="text" name="newMessageBody">
+      <button v-on:click="createMessage()">Send</button>
+    </div>
+  <% end %>
+
+  <div v-for="message in messages">
+    <div class="message">
+      {{ message.name }}: {{ message.body }}
+    </div>
+  </div>
+</div>

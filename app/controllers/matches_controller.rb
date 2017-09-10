@@ -10,7 +10,6 @@ class MatchesController < ApplicationController
     @outgoing_matches = []
     @incoming_matches = []
     @current_user_petids = []
-    # @pet_info = Pet.find_by(id: params[:pet_id])
 
     current_user.pets.each do |current_user_pet|
       pet_outmatches = Match.where(pet_id: current_user_pet.id)
@@ -68,8 +67,9 @@ class MatchesController < ApplicationController
 
 
   def show
-    @pet_match = Match.find_by(id: params[:id])
+    match_id = params[:id]
+    @confirmed_match = Match.find_by(id: match_id)
 
-    render 'show.html.erb'
+    render "show.html.erb"
   end
 end

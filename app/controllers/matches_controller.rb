@@ -67,9 +67,31 @@ class MatchesController < ApplicationController
 
 
   def show
+    @pets = Pet.all
     match_id = params[:id]
     @confirmed_match = Match.find_by(id: match_id)
+    current_user.pets.each do |current_user_pet|
+      if current_user_pet.id == @confirmed_match.pet_id
+        @pet_id = @confirmed_match.pet_id
+      end
+    end
 
     render "show.html.erb"
+  end
+
+  def alert
+    account_sid = "AC8701ecf9a249ccffed5df99ca5d57b2a"
+    auth_token = "0617cff4d9f2320e925318aeb4a0789f"
+
+    # set up a client to talk to the Twilio REST API 
+    @client = Twilio::REST::Client.new account_sid, auth_token
+
+    @client.api.account.messages.create(
+      :from => "+17085720692",
+      :to => "+12245673576",
+      :body => "You've been sniffed!", 
+    )
+
+    render "sniff.html.erb"
   end
 end

@@ -1,4 +1,6 @@
 json.id @message.id
-json.name @message.pet.name
-json.inverse_name @message.inverse_pet.name
+json.matchId @message.match_id
+json.petId @message.pet_id
+json.inversePetId @message.inverse_pet_id
+json.petName @message.pet.name
 json.body @message.body

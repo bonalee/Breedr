@@ -7,8 +7,12 @@ class MessagesController < ApplicationController
   def create
     @message = Message.create(
       body: params[:body],
-      pet_id: current_user.pet.id
       )
     redirect_to "/messages"
+  end
+
+  def show
+    @messages = Message.all
+    render 'show.html.erb'
   end
 end

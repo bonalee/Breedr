@@ -1,3 +1,9 @@
+<script type="text/javascript">
+  matchId = <%= @confirmed_match.id %>;
+  petId = <%= @confirmed_match.pet_id %>;
+  inversePetId = <%= @confirmed_match.inverse_pet_id %>;
+</script>
+
 <!-- Page Title -->
   <div class="section section-breadcrumbs">
     <div class="container">
@@ -30,10 +36,14 @@
 
       <div id="app">
         <div v-for="message in messages">
-          {{ message.pet_id }}: {{ message.body }}
+            {{ message.petName }}: {{ message.body }}
+            <br>
         </div>
 
-        <input type="text" name="newMessageBody">
+        <input type="hidden" v-model="matchId" value="<%= @confirmed_match.id %>">
+        <input type="hidden" v-model="petId" value="<%= @confirmed_match.pet_id %>">
+        <input type="hidden" v-model="inversePetId" value="<%= @confirmed_match.inverse_pet_id %>">
+        <input type="text" v-model="newMessageBody">
         <button v-on:click="createMessage()">Send</button>
       </div>
 

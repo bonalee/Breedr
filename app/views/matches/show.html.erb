@@ -15,31 +15,31 @@
     </div>
   </div>
 
-  <div class="section">
-    <div class="container">
+
       <div class="row-sm-6">
-        <div class="portfolio-item">
-          <div class="portfolio-image">
-              <img src="<%= @confirmed_match.pet.image %>" height="300" width="335">
-              <img src="<%= @confirmed_match.inverse_pet.image %>" height="300" width="335">
-          </div>
-          <div class="portfolio-info-fade">
-            <ul>
-              <br>
-              <br>
-              <br>
-              <li class="portfolio-project-name"><%= @confirmed_match.pet.name %> &hearts; <%= @confirmed_match.inverse_pet.name %></li>
-            </ul>
+        <div class="center-image-header">
+          <div class="portfolio-item">
+            <div class="portfolio-image">
+                <img src="<%= @confirmed_match.pet.image %>" height="300" width="335">
+                <img src="<%= @confirmed_match.inverse_pet.image %>" height="300" width="335">
+            </div>
+            <div class="portfolio-info-fade">
+              <ul>
+                <li class="portfolio-project-name"><%= @confirmed_match.pet.name %> &hearts; <%= @confirmed_match.inverse_pet.name %></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
 
       <div id="app">
-        <div v-for="message in messages" class="container">
+        <% if current_user %>
+          <div v-for="message in messages" class="container">
             <div class="chat-bubble">
-              <img src="{{ message.petName }}" height="30" width="30">: {{ message.body }}
+              <b>{{ message.petName }}</b>: <p>{{ message.body }}</p>
             </div>
-        </div>
+          </div>
+        <% end %>
 
         <input type="hidden" v-model="matchId" value="<%= @confirmed_match.id %>">
         <input type="hidden" v-model="petId" value="<%= @confirmed_match.pet_id %>">
@@ -56,14 +56,18 @@
   </div>
 
 <style type="text/css">
-  .new-message{
-    float: right;
+  .center-image-header {
+    margin: auto;
+  }
+
+  .new-message {
+    float: inherit;
   }
 
   .container {
     position: relative;
-    margin: 15px;
-    padding: 0 15px;
+    margin: 10px;
+    padding: 5 20px;
   }
 
   .chat-bubble {
@@ -73,8 +77,22 @@
     margin: 0 auto;
     height: 47px;
     background: #7ABFED;
-    border-radius: 15px;
     border: 8px solid #7ABFED;
+    border-radius: 15px;
     position: relative;
+    text-align: left;
+  }
+
+  .chat-bubble-right {
+    max-width: 700px;
+    width: 100%;
+    z-index: 1;
+    margin: 0 auto;
+    height: 47px;
+    background: #657383;
+    border: 8px solid #657383;
+    border-radius: 15px;
+    position: relative;
+    text-align: right;
   }
 </style>

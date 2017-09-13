@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   get "/" => "pets#user_index"
+  get "/sniff" => "pets#sniff"
 
   get "/breeds" => "breeds#index"
   get "/breeds/:id" => "breeds#show"
@@ -23,7 +24,6 @@ Rails.application.routes.draw do
   post "/matches" => "matches#create"
   patch "/matches/:id" => "matches#update"
   get "/matches/:id" => "matches#show"
-  get "/matches/sniff" => "matches#alert"
 
   get "/signup" => "users#new"
   post "/users" => "users#create"

@@ -45,5 +45,9 @@ class PetsController < ApplicationController
     redirect_to "/mypets"
     flash[:success] = "Pet deleted!"
   end
+
+  def sniff
+    render "sniff.html.erb"
+  end
 end
 

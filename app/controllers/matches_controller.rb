@@ -79,19 +79,4 @@ class MatchesController < ApplicationController
     render "show.html.erb"
   end
 
-  def alert
-    account_sid = ""
-    auth_token = "0617cff4d9f2320e925318aeb4a0789f"
-
-    # set up a client to talk to the Twilio REST API 
-    @client = Twilio::REST::Client.new account_sid, auth_token
-
-    @client.api.account.messages.create(
-      :from => "+17085720692",
-      :to => "+12245673576",
-      :body => "You've been sniffed!", 
-    )
-
-    render "sniff.html.erb"
-  end
 end

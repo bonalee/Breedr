@@ -35,18 +35,46 @@
       </div>
 
       <div id="app">
-        <div v-for="message in messages">
-            {{ message.petName }}: {{ message.body }}
-            <br>
+        <div v-for="message in messages" class="container">
+            <div class="chat-bubble">
+              <img src="{{ message.petName }}" height="30" width="30">: {{ message.body }}
+            </div>
         </div>
 
         <input type="hidden" v-model="matchId" value="<%= @confirmed_match.id %>">
         <input type="hidden" v-model="petId" value="<%= @confirmed_match.pet_id %>">
         <input type="hidden" v-model="inversePetId" value="<%= @confirmed_match.inverse_pet_id %>">
-        <input type="text" v-model="newMessageBody">
-        <button v-on:click="createMessage()">Send</button>
+        <br>
+        <br>
+        <div class="new-message">
+          <input type="text" v-model="newMessageBody">
+          <button v-on:click="createMessage()" class="btn">Send</button>
+        </div>
       </div>
 
     </div>
   </div>
 
+<style type="text/css">
+  .new-message{
+    float: right;
+  }
+
+  .container {
+    position: relative;
+    margin: 15px;
+    padding: 0 15px;
+  }
+
+  .chat-bubble {
+    max-width: 700px;
+    width: 100%;
+    z-index: 1;
+    margin: 0 auto;
+    height: 47px;
+    background: #7ABFED;
+    border-radius: 15px;
+    border: 8px solid #7ABFED;
+    position: relative;
+  }
+</style>

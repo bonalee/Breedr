@@ -80,7 +80,7 @@ class MatchesController < ApplicationController
   end
 
   def alert
-    account_sid = "AC8701ecf9a249ccffed5df99ca5d57b2a"
+    account_sid = ""
     auth_token = "0617cff4d9f2320e925318aeb4a0789f"
 
     # set up a client to talk to the Twilio REST API 

@@ -68,14 +68,17 @@ class MatchesController < ApplicationController
 
   def show
     @pets = Pet.all
+    @pet_id = 5
     match_id = params[:id]
     @confirmed_match = Match.find_by(id: match_id)
     current_user.pets.each do |current_user_pet|
       if current_user_pet.id == @confirmed_match.pet_id
         @pet_id = @confirmed_match.pet_id
+        break
       end
-    end
 
+    end
+    console
     render "show.html.erb"
   end
 

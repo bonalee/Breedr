@@ -16,6 +16,21 @@ class Api::V1::MessagesController < ApplicationController
       )
     @message.save
 
+    ActionCable.server.broadcast 'activity_channel', {
+      # id: @message.id,
+      # pet_id: @message.pet_id,
+      # inverse_pet_id: @message.inverse_pet_id,
+      # match_id: @message.match_id,
+      # body: @message.body
+      id: @message.id,
+      matchId: @message.match_id,
+      petId: @message.pet_id,
+      inversePetId: @message.inverse_pet_id,
+      petName: @message.pet.name,
+      body: @message.body
+    }
+
+
     render "show.json.jbuilder"
   end
   
@@ -30,13 +45,6 @@ class Api::V1::MessagesController < ApplicationController
       )
     @message.save
 
-    ActionCable.server.broadcast 'activity_channel', {
-      id: @message.id,
-      pet_id: @message.pet_id,
-      inverse_pet_id: @message.inverse_pet_id,
-      match_id: @message.match_id,
-      body: @message.body
-    }
 
     render "show.json.jbuilder"
   end

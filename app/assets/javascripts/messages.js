@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         url: "/api/v1/messages?match_id=" + this.matchId,
         type: "get",
         success: function(response) {
-          console.log('success', response);
+          console.log('success');
           this.messages = response;
         }.bind(this)
       });
@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
           type: "post",
           data: "match_id=" + this.matchId + "&pet_id=" + this.petId + "&inverse_pet_id=" + this.inversePetId + "&body=" + this.newMessageBody,
           success: function(response) {
-            console.log('createMessage success', response);
             this.messages.push(response);
             this.newMessageBody = "";
           }.bind(this)

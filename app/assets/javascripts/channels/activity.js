@@ -8,6 +8,7 @@ App.activity = App.cable.subscriptions.create("ActivityChannel", {
   },
 
   received: function(data) {
-    app.__vue__.messages.unshift(data);
+    console.log('actioncable', data);
+    app.__vue__.messages.push(data);
   }
 });

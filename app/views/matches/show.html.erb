@@ -1,6 +1,6 @@
 <script type="text/javascript">
   matchId = <%= @confirmed_match.id %>;
-  petId = <%= @confirmed_match.pet_id %>;
+  petId = <%= @pet_id || @confirmed_match.pet_id %>;
   inversePetId = <%= @confirmed_match.inverse_pet_id %>;
 </script>
 
@@ -33,13 +33,12 @@
       </div>
 
       <div id="app">
-        <% if current_user %>
           <div v-for="message in messages" class="container">
-            <div class="chat-bubble">
+            <div :class="{'chat-bubble': true, 'chat-bubble-right': message.petId === 5}">
               <b>{{ message.petName }}</b>: <p>{{ message.body }}</p>
             </div>
           </div>
-        <% end %>
+        
 
         <input type="hidden" v-model="matchId" value="<%= @confirmed_match.id %>">
         <input type="hidden" v-model="petId" value="<%= @confirmed_match.pet_id %>">
@@ -47,7 +46,7 @@
         <br>
         <br>
         <div class="new-message">
-          <input type="text" v-model="newMessageBody">
+          <input type="text" v-model="newMessageBody" size="125">
           <button v-on:click="createMessage()" class="btn">Send</button>
         </div>
       </div>
@@ -56,42 +55,45 @@
   </div>
 
 <style type="text/css">
+
   .center-image-header {
     margin: auto;
   }
 
   .new-message {
-    float: inherit;
+    margin: auto;
+    padding-left: 10%;
+    width: 100%;
   }
 
   .container {
     position: relative;
-    margin: 10px;
+    margin: 15px;
     padding: 5 20px;
   }
 
   .chat-bubble {
-    max-width: 700px;
-    width: 100%;
+    max-width: 900px;
+    width: 900px;
     z-index: 1;
     margin: 0 auto;
     height: 47px;
-    background: #7ABFED;
-    border: 8px solid #7ABFED;
+    background: #A0CFEC;
+    border: 7px solid #A0CFEC;
     border-radius: 15px;
     position: relative;
     text-align: left;
   }
 
   .chat-bubble-right {
-    max-width: 700px;
-    width: 100%;
-    z-index: 1;
-    margin: 0 auto;
-    height: 47px;
-    background: #657383;
-    border: 8px solid #657383;
-    border-radius: 15px;
+    /*max-width: 700px;*/
+    /*width: 100%;*/
+    /*z-index: 1;*/
+    /*margin: 0 auto;*/
+    /*height: 47px;*/
+    background: #98AFC7;
+    border: 7px solid #98AFC7;
+    /*border-radius: 15px;*/
     position: relative;
     text-align: right;
   }
